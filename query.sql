@@ -1,9 +1,8 @@
--- World table
-SELECT population FROM world
-  WHERE name = 'Germany';
+-- world table
+SELECT population FROM world WHERE name = 'Germany';
 
 SELECT name, population FROM world
-  WHERE name IN ('Sweden', 'Norway', 'Denmark');
+  WHERE name IN ('Sweden', 'NORway', 'Denmark');
 
 SELECT name, area FROM world
   WHERE area BETWEEN 200000 AND 250000;
@@ -25,7 +24,7 @@ SELECT name, population
 FROM world
 WHERE name IN('France', 'Germany', 'Italy');
 
-SELECT name from world 
+SELECT name FROM world 
 WHERE name LIKE '%United%';
 
 SELECT name, population, area 
@@ -59,36 +58,61 @@ SELECT name
    FROM world
 WHERE name LIKE'%a%' AND name LIKE'%e%'
 AND name LIKE'%i%' AND name LIKE'%o%'
-AND name LIKE'%u%' AND name NOT like'% %'
+AND name LIKE'%u%' AND name NOT LIKE'% %'
 
 
--- select from Nobel database
+-- SELECT FROM Nobel database
 
-SELECT yr, subject, winner FROM nobel WHERE yr = 1950
-SELECT winner FROM nobel WHERE yr = 1962 AND subject = 'Literature'
-SELECT yr, subject FROM nobel WHERE winner = 'Albert Einstein';
-SELECT winner FROM nobel WHERE subject = 'PEACE' AND yr >= 2000;
-SELECT yr,subject,winner FROM nobel WHERE subject='Literature' AND yr BETWEEN 1980 AND 1989
-SELECT * FROM nobel WHERE winner IN ('Theodore Roosevelt','Woodrow Wilson','Jimmy Carter','Barack Obama')
-SELECT winner FROM nobel WHERE winner LIKE'John%'
+SELECT yr, subject, winner 
+  FROM nobel 
+  WHERE yr = 1950
 
-select yr,subject,winner
-from nobel
-where (subject='Physics' and yr=1980) or (subject='Chemistry' and yr=1984)
 
-select yr,subject,winner
- from nobel
-where subject not in('Chemistry', 'Medicine') and yr=1980
+SELECT winner 
+FROM nobel 
+WHERE yr = 1962 AND subject = 'Literature'
 
-select yr,subject,winner
-from nobel
-where (subject='Medicine' and yr < 1910)
-or (subject='Literature' and yr >= 2004)
 
-select * from nobel where winner='PETER GRÜNBERG'
+SELECT yr, subject 
+FROM nobel 
+WHERE winner = 'Albert Einstein';
 
-select * from nobel where winner like'EUGENE O''NEILL'
+SELECT winner 
+FROM nobel 
+WHERE subject = 'PEACE' AND yr >= 2000;
 
-select winner,yr,subject
-from nobel
-where winner like'Sir%' order by yr desc, winner
+SELECT yr,subject,winner 
+FROM nobel 
+WHERE subject='Literature' AND yr BETWEEN 1980 AND 1989
+
+SELECT * 
+FROM nobel 
+WHERE winner IN ('TheodORe Roosevelt','Woodrow Wilson','Jimmy Carter','Barack Obama')
+
+SELECT winner 
+FROM nobel 
+WHERE winner LIKE'John%'
+
+
+SELECT yr,subject,winner
+FROM nobel
+WHERE (subject='Physics' AND yr=1980) OR (subject='Chemistry' AND yr=1984)
+
+SELECT yr,subject,winner
+ FROM nobel
+WHERE subject not in('Chemistry', 'Medicine') AND yr=1980
+
+SELECT yr,subject,winner
+FROM nobel
+WHERE (subject='Medicine' AND yr < 1910)
+OR (subject='Literature' AND yr >= 2004)
+
+SELECT * FROM nobel 
+WHERE winner='PETER GRÜNBERG'
+
+SELECT * FROM nobel 
+WHERE winner LIKE'EUGENE O''NEILL'
+
+SELECT winner,yr,subject
+FROM nobel
+WHERE winner LIKE'Sir%' ORDER BY yr DESC, winner
